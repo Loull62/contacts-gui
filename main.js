@@ -27,11 +27,14 @@ function goBtnHandler() {
 
 // MENU FUNCTIONS
 function displayContacts() {
-  console.log('Display Contacts');
+  // console.log('Display Contacts');
+
 }
 
 function addContact() {
   console.log('Add Contact');
+  let contactName = prompt("Give name")
+  let contactEmail = prompt("Input Email")
 }
 
 function removeContact() {
