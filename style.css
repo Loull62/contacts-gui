@@ -3,3 +3,7 @@ body {
   margin: auto;
   padding: 20px;
 }
+
+option {
+  padding: 20px;
+}
