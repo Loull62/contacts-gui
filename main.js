@@ -31,20 +31,40 @@ function goBtnHandler() {
 // MENU FUNCTIONS
 function displayContacts() {
   // console.log('Display Contacts');
-  let index = ''
+  let outputStr = ''
   for (i = 0; i > contacts.length; i++) {
-    outputStr += getTaskHTMLStr(tasks[i], i);
+    outputStr += showContacts(contacts[i], i);
   }
   outputEl.innerHTML = outputStr;
 }
 
+function showContacts(contacts, i) {
+  return `
+  <div class=" ${i}: ${contacts.name}">
+  ${contacts.email}
+  ${contacts.num} (${contacts.ctny})
+  </div>
+  `;
+}
+
 function addContact() {
   console.log('Add Contact');
-  let contactName = prompt("Give name")
-  let contactEmail = prompt("Input Email")
-  let contactNum = prompt("Give number")
-  let contactCnty = prompt("Give country")
-  document.getElementById("output").innerHTML = "New Contact Added" + "(" + contactName + ")";
+  let contactName = +prompt("Give name")
+  let contactEmail = +prompt("Input Email")
+  let contactNum = +prompt("Give number")
+  let contactCnty = +prompt("Give country")
+  document.getElementById("output").innerHTML = contacts.push(newContact(contactName, contactEmail, contactNum, contactCnty));
+  saveContacts();
+  displayContacts();
+}
+
+function newContact(contactNames, contactEmails, contactNums, contactCntys) {
+  return {
+    name: contactNames,
+    email: contactEmails,
+    num: contactNums,
+    cnty: contactCntys,
+  };
 }
 
 function removeContact() {
@@ -53,11 +73,11 @@ function removeContact() {
   if (index >= 0 && index < tasks.length) {
     //  Valid Index -> Remove
     tasks.splice(index, 1);
-    saveContacts();
-    displayAll();
   } else {
     alert('Invalid Contact #')
   }
+  saveContacts();
+  displayAll();
 }
 
 function displayByName() {
@@ -75,9 +95,6 @@ function saveContacts() {
 function loadContacts() {
   let contactsStr = localStorage.getItem('contacts');
   return JSON.parse(contactsStr) ?? [];
-}
-
-function loadContacts() {
 }
 
 // let found = false;
