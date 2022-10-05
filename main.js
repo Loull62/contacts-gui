@@ -53,7 +53,8 @@ function addContact() {
   let contactEmail = +prompt("Input Email")
   let contactNum = +prompt("Give number")
   let contactCnty = +prompt("Give country")
-  document.getElementById("output").innerHTML = contacts.push(newContact(contactName, contactEmail, contactNum, contactCnty));
+  // document.getElementById("output").innerHTML = 
+  contacts.push(newContact(contactName, contactEmail, contactNum, contactCnty));
   saveContacts();
   displayContacts();
 }
@@ -70,7 +71,7 @@ function newContact(contactNames, contactEmails, contactNums, contactCntys) {
 function removeContact() {
   // console.log('Remove Contact');
   let contactRmv = prompt("Contact number")
-  if (index >= 0 && index < tasks.length) {
+  if (contactRmv >= 0 && contactRmv < tasks.length) {
     //  Valid Index -> Remove
     tasks.splice(index, 1);
   } else {
