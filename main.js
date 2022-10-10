@@ -3,7 +3,7 @@
 // HTML Elements
 let goBtnEl = document.getElementById('go-btn');
 let menuEl = document.getElementById('menu');
-let outputEl = document.getElementById('output');
+let outputEl = document.getElementById('contacts');
 
 let contacts = loadContacts();
 displayContacts;
@@ -48,11 +48,11 @@ function showContacts(contacts, i) {
 }
 
 function addContact() {
-  console.log('Add Contact');
-  let contactName = +prompt("Give name")
-  let contactEmail = +prompt("Input Email")
-  let contactNum = +prompt("Give number")
-  let contactCnty = +prompt("Give country")
+  // console.log('Add Contact');
+  let contactName = prompt("Give name");
+  let contactEmail = prompt("Input Email");
+  let contactNum = prompt("Give number");
+  let contactCnty = prompt("Give country");
   // document.getElementById("output").innerHTML = 
   contacts.push(newContact(contactName, contactEmail, contactNum, contactCnty));
   saveContacts();
